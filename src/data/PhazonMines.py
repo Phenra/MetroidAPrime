@@ -252,10 +252,12 @@ class PhazonMinesAreaData(AreaData):
                 doors={
                     0: DoorData(
                         RoomName.Fungal_Hall_A,
+                        defaultLock=DoorLockType.Plasma,
                         rule_func=lambda world, state: can_space_jump(world, state),
                     ),
                     1: DoorData(
                         RoomName.Elevator_B,
+                        defaultLock=DoorLockType.Plasma,
                         rule_func=lambda world, state: can_space_jump(world, state),
                     ),
                 },
