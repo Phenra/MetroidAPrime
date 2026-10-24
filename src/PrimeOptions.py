@@ -327,6 +327,13 @@ class ProgressiveBeamUpgrades(Toggle):
 
     display_name = "Progressive Beam Upgrades"
 
+class EnergyTankCount(Range):
+    """Modify the number of Energy Tanks placed into the item pool."""
+
+    display_name = "Energy Tank Count"
+    range_start = 0
+    range_end = 14
+    default = 14
 
 # COSMETIC OPTIONS (Moved to host.yaml)
 
@@ -498,6 +505,7 @@ class MetroidPrimeOptions(PerGameCommonOptions):
     remove_thermal_requirements: RemoveThermalRequirements
     remove_hive_mecha: RemoveHiveMecha
     spring_ball: SpringBall
+    energy_tank_count: EnergyTankCount
 
     # Cosmetic options
     fusion_suit: FusionSuit
@@ -525,6 +533,7 @@ prime_option_groups = [
             FinalBosses,
             StartingRoom,
             CombatLogicDifficultyOption,
+            EnergyTankCount,
         ],
     ),
     OptionGroup(

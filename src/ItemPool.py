@@ -95,7 +95,7 @@ def generate_item_pool(world: "MetroidPrimeWorld") -> List[MetroidPrimeItem]:
         )
 
     # Add energy tanks
-    max_tanks = 14
+    max_tanks = world.options.energy_tank_count
     progression_tanks = 8
     for i in range(0, max_tanks):
         items.append(

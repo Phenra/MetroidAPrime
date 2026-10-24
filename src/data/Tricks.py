@@ -268,7 +268,10 @@ class Tricks:
         "Use infinite speed to get the item in the magma pool. Stay in morph ball and navigate to a save station or elevator afterward",
         TrickDifficulty.Medium,
         rule_func=lambda world, state: can_infinite_speed(world, state)
-        and has_energy_tanks(world, state, 8),
+        and (
+            has_energy_tanks(world, state, 8) or
+            can_heat
+        ),
     )
 
     arboretum_scan_gate_skip: TrickInfo = TrickInfo(

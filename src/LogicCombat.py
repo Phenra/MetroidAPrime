@@ -26,11 +26,13 @@ def _can_combat_generic(
     if difficulty == CombatLogicDifficulty.NO_LOGIC:
         return True
     elif difficulty == CombatLogicDifficulty.NORMAL:
-        return has_energy_tanks(world, state, normal_tanks) and (
+        energy_tanks = min(world.options.energy_tank_count, normal_tanks)
+        return has_energy_tanks(world, state, energy_tanks) and (
             can_charge_beam(world, state) or not requires_charge_beam
         )
     elif difficulty == CombatLogicDifficulty.MINIMAL:
-        return has_energy_tanks(world, state, minimal_tanks) and (
+        energy_tanks = min(world.options.energy_tank_count, minimal_tanks)
+        return has_energy_tanks(world, state, energy_tanks) and (
             can_charge_beam(world, state) or not requires_charge_beam
         )
     return True
@@ -63,7 +65,8 @@ def can_combat_thardus(world: "MetroidPrimeWorld", state: CollectionState) -> bo
     if difficulty == CombatLogicDifficulty.NO_LOGIC.value:
         return True
     elif difficulty == CombatLogicDifficulty.NORMAL.value:
-        return has_energy_tanks(world, state, 3) and (
+        energy_tanks = min(world.options.energy_tank_count, 3)
+        return has_energy_tanks(world, state, energy_tanks) and (
             can_charge_beam(world, state)
             and (can_plasma_beam(world, state) or can_power_beam(world, state))
         )

@@ -462,13 +462,15 @@ class ChozoRuinsAreaData(AreaData):
                     ),
                     1: DoorData(
                         RoomName.Meditation_Fountain,
-                        rule_func=lambda world, state: has_energy_tanks(world, state, 1)
-                        and (
-                            state.has(SuitUpgrade.Varia_Suit.value, world.player)
-                            or state.has(SuitUpgrade.Gravity_Suit.value, world.player)
-                            or state.has(SuitUpgrade.Phazon_Suit.value, world.player)
-                        ),
-                    ),  # Damage reduction lets player cross
+                        rule_func=lambda world, state: state.has(SuitUpgrade.Varia_Suit.value, world.player)
+                        or (
+                            has_energy_tanks(world, state, 1) and
+                            (
+                                state.has(SuitUpgrade.Gravity_Suit.value, world.player)
+                                or state.has(SuitUpgrade.Phazon_Suit.value, world.player)
+                            )
+                        ), # Damage reduction lets player cross
+                    ),
                 },
                 pickups=[
                     PickupData(
